@@ -1,4 +1,4 @@
-module Facebook
+module Chatclub
   module Messenger
     class Error < StandardError; end
   end

@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'facebook/messenger/version'
+require 'chatclub/messenger/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'facebook-messenger'
-  spec.version       = Facebook::Messenger::VERSION
+  spec.name          = 'chatclub-messenger'
+  spec.version       = Chatclub::Messenger::VERSION
   spec.authors       = ['Johannes Gorset']
   spec.email         = ['jgorset@gmail.com']
 

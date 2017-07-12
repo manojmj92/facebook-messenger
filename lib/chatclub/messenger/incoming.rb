@@ -1,12 +1,12 @@
-require 'facebook/messenger/incoming/common'
-require 'facebook/messenger/incoming/message'
-require 'facebook/messenger/incoming/delivery'
-require 'facebook/messenger/incoming/postback'
-require 'facebook/messenger/incoming/optin'
-require 'facebook/messenger/incoming/read'
-require 'facebook/messenger/incoming/account_linking'
+require 'chatclub/messenger/incoming/common'
+require 'chatclub/messenger/incoming/message'
+require 'chatclub/messenger/incoming/delivery'
+require 'chatclub/messenger/incoming/postback'
+require 'chatclub/messenger/incoming/optin'
+require 'chatclub/messenger/incoming/read'
+require 'chatclub/messenger/incoming/account_linking'
 
-module Facebook
+module Chatclub
   module Messenger
     # The Incoming module parses and abstracts incoming requests from
     # Facebook Messenger.
@@ -33,7 +33,7 @@ module Facebook
         raise UnknownPayload, payload
       end
 
-      class UnknownPayload < Facebook::Messenger::Error; end
+      class UnknownPayload < Chatclub::Messenger::Error; end
     end
   end
 end

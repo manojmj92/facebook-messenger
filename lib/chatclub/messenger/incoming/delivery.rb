@@ -1,9 +1,9 @@
-module Facebook
+module Chatclub
   module Messenger
     module Incoming
       # The Delivery class represents the receipt of a delivered message.
       class Delivery
-        include Facebook::Messenger::Incoming::Common
+        include Chatclub::Messenger::Incoming::Common
 
         def ids
           @messaging['delivery']['mids']

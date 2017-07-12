@@ -1,10 +1,10 @@
-module Facebook
+module Chatclub
   module Messenger
     # The Bot module sends and receives messages.
     module Bot
       include HTTParty
 
-      base_uri 'https://graph.facebook.com/v2.6/me'
+      base_uri 'https://chatclub.me/integration/facebook/v2.6/me'
 
       EVENTS = [:message, :delivery, :postback, :optin,
                 :read, :account_linking].freeze
@@ -51,8 +51,8 @@ module Facebook
         #
         # * https://developers.facebook.com/docs/messenger-platform/webhook-reference
         def receive(payload)
-          callback = Facebook::Messenger::Incoming.parse(payload)
-          event = Facebook::Messenger::Incoming::EVENTS.invert[callback.class]
+          callback = Chatclub::Messenger::Incoming.parse(payload)
+          event = Chatclub::Messenger::Incoming::EVENTS.invert[callback.class]
           trigger(event.to_sym, callback)
         end
 
@@ -91,7 +91,7 @@ module Facebook
             100 => RecipientNotFound,
             10 => PermissionDenied,
             2 => InternalError
-          }[error_code] || Facebook::Messenger::Error
+          }[error_code] || Chatclub::Messenger::Error
         end
 
         # Return a Hash of hooks.
@@ -114,9 +114,9 @@ module Facebook
         end
       end
 
-      class RecipientNotFound < Facebook::Messenger::Error; end
-      class PermissionDenied < Facebook::Messenger::Error; end
-      class InternalError < Facebook::Messenger::Error; end
+      class RecipientNotFound < Chatclub::Messenger::Error; end
+      class PermissionDenied < Chatclub::Messenger::Error; end
+      class InternalError < Chatclub::Messenger::Error; end
     end
   end
 end

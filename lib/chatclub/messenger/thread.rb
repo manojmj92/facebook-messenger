@@ -1,6 +1,6 @@
 require 'httparty'
 
-module Facebook
+module Chatclub
   module Messenger
     # This module handles changing thread settings.
     #
@@ -46,7 +46,7 @@ module Facebook
         )
       end
 
-      class Error < Facebook::Messenger::Error; end
+      class Error < Chatclub::Messenger::Error; end
     end
   end
 end

@@ -1,6 +1,6 @@
 require 'httparty'
 
-module Facebook
+module Chatclub
   module Messenger
     # This module handles subscribing and unsubscribing Applications to Pages.
     module Subscriptions
@@ -36,7 +36,7 @@ module Facebook
         raise Error, response['error']['message'] if response.key? 'error'
       end
 
-      class Error < Facebook::Messenger::Error; end
+      class Error < Chatclub::Messenger::Error; end
     end
   end
 end

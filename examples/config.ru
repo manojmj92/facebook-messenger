@@ -1,4 +1,4 @@
-require 'facebook/messenger'
+require 'chatclub/messenger'
 require_relative 'bot'
 
-run Facebook::Messenger::Server
+run Chatclub::Messenger::Server

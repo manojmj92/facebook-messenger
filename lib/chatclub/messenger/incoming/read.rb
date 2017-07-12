@@ -1,9 +1,9 @@
-module Facebook
+module Chatclub
   module Messenger
     module Incoming
       # The Read class represents the user reading a delivered message.
       class Read
-        include Facebook::Messenger::Incoming::Common
+        include Chatclub::Messenger::Incoming::Common
 
         def at
           Time.at(@messaging['read']['watermark'] / 1000)

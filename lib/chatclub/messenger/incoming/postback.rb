@@ -1,9 +1,9 @@
-module Facebook
+module Chatclub
   module Messenger
     module Incoming
       # The Postback class represents an incoming Facebook Messenger postback.
       class Postback
-        include Facebook::Messenger::Incoming::Common
+        include Chatclub::Messenger::Incoming::Common
 
         def payload
           @messaging['postback']['payload']

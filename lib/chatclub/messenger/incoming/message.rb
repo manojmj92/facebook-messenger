@@ -1,9 +1,9 @@
-module Facebook
+module Chatclub
   module Messenger
     module Incoming
       # The Message class represents an incoming Facebook Messenger message.
       class Message
-        include Facebook::Messenger::Incoming::Common
+        include Chatclub::Messenger::Incoming::Common
 
         ATTACHMENT_TYPES = ['image', 'audio', 'video', 'file','location','fallback']
 

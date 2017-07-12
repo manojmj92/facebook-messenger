@@ -1,4 +1,4 @@
-module Facebook
+module Chatclub
   module Messenger
     module Incoming
       # The AccountLinking class represents an incoming Facebook Messenger
@@ -7,7 +7,7 @@ module Facebook
       #
       # https://developers.facebook.com/docs/messenger-platform/webhook-reference/account-linking
       class AccountLinking
-        include Facebook::Messenger::Incoming::Common
+        include Chatclub::Messenger::Incoming::Common
 
         def status
           @messaging['account_linking']['status']

@@ -1,4 +1,4 @@
-module Facebook
+module Chatclub
   module Messenger
     module Incoming
       # The Optin class represents an incoming Facebook Messenger optin,
@@ -6,7 +6,7 @@ module Facebook
       #
       # https://developers.facebook.com/docs/messenger-platform/plugin-reference
       class Optin
-        include Facebook::Messenger::Incoming::Common
+        include Chatclub::Messenger::Incoming::Common
 
         def ref
           @messaging['optin']['ref']

@@ -1,4 +1,4 @@
-module Facebook
+module Chatclub
   module Messenger
     module Incoming
       # Common attributes for all incoming data from Facebook.
@@ -27,7 +27,7 @@ module Facebook
             sender_action: 'typing_on'
           }
 
-          Facebook::Messenger::Bot.deliver(payload, access_token: access_token)
+          Chatclub::Messenger::Bot.deliver(payload, access_token: access_token)
         end
 
         def reply(message)
@@ -36,11 +36,11 @@ module Facebook
             message: message
           }
 
-          Facebook::Messenger::Bot.deliver(payload, access_token: access_token)
+          Chatclub::Messenger::Bot.deliver(payload, access_token: access_token)
         end
 
         def access_token
-          Facebook::Messenger.config.provider.access_token_for(recipient)
+          Chatclub::Messenger.config.provider.access_token_for(recipient)
         end
       end
     end

@@ -1,6 +1,6 @@
-require 'facebook/messenger'
+require 'chactclub/messenger'
 
-include Facebook::Messenger
+include Chactclub::Messenger
 
 Bot.on :message do |message|
   puts "Received '#{message.inspect}' from #{message.sender}"

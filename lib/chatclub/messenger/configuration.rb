@@ -1,6 +1,6 @@
-require 'facebook/messenger/configuration/providers'
+require 'chatclub/messenger/configuration/providers'
 
-module Facebook
+module Chatclub
   module Messenger
     # This module holds the configuration.
     class Configuration

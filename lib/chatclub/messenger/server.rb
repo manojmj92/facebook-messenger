@@ -2,7 +2,7 @@ require 'rack'
 require 'json'
 require 'openssl'
 
-module Facebook
+module Chatclub
   module Messenger
     class BadRequestError < Error; end
 
@@ -37,15 +37,11 @@ module Facebook
       private
 
       def verify
-        if valid_verify_token?(@request.params['hub.verify_token'])
-          @response.write @request.params['hub.challenge']
-        else
-          @response.write 'Error; wrong verify token'
-        end
+        true
       end
 
       def receive
-        check_integrity
+        #check_integrity
 
         trigger(parsed_body)
       rescue BadRequestError => error
@@ -104,12 +100,12 @@ module Facebook
 
       # Returns a String describing the bot's configured app secret.
       def app_secret_for(facebook_page_id)
-        Facebook::Messenger.config.provider.app_secret_for(facebook_page_id)
+        Chatclub::Messenger.config.provider.app_secret_for(facebook_page_id)
       end
 
       # Checks whether a verify token is valid.
       def valid_verify_token?(token)
-        Facebook::Messenger.config.provider.valid_verify_token?(token)
+        Chatclub::Messenger.config.provider.valid_verify_token?(token)
       end
 
       # Returns a String describing the request body.
@@ -127,13 +123,13 @@ module Facebook
       def trigger(events)
         # Facebook may batch several items in the 'entry' array during
         # periods of high load.
-        events['entry'.freeze].each do |entry|
+        #events['entry'.freeze].each do |entry|
           # Facebook may batch several items in the 'messaging' array during
           # periods of high load.
-          entry['messaging'.freeze].each do |messaging|
-            Facebook::Messenger::Bot.receive(messaging)
-          end
-        end
+          #entry['messaging'.freeze].each do |messaging|
+            Chatclub::Messenger::Bot.receive(events)
+          #end
+        #end
       end
 
       def respond_with_error(error)

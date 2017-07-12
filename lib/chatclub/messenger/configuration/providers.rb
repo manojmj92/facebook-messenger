@@ -1,7 +1,7 @@
-require 'facebook/messenger/configuration/providers/environment'
-require 'facebook/messenger/configuration/providers/base'
+require 'chatclub/messenger/configuration/providers/environment'
+require 'chatclub/messenger/configuration/providers/base'
 
-module Facebook
+module Chatclub
   module Messenger
     class Configuration
       # The Providers module contains configuration providers that ship with the
