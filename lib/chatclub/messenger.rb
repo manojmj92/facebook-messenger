@@ -3,7 +3,7 @@ require 'chatclub/messenger/error'
 require 'chatclub/messenger/subscriptions'
 require 'chatclub/messenger/thread'
 require 'chatclub/messenger/bot'
-require 'chatclub/messenger/chatclub'
+require 'chatclub/messenger/server'
 require 'chatclub/messenger/configuration'
 require 'chatclub/messenger/incoming'
 
