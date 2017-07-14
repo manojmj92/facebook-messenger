@@ -123,13 +123,13 @@ module Chatclub
       def trigger(events)
         # Facebook may batch several items in the 'entry' array during
         # periods of high load.
-        #events['entry'.freeze].each do |entry|
+        events['entry'.freeze].each do |entry|
           # Facebook may batch several items in the 'messaging' array during
           # periods of high load.
-          #entry['messaging'.freeze].each do |messaging|
+          entry['messaging'.freeze].each do |messaging|
             Chatclub::Messenger::Bot.receive(events)
-          #end
-        #end
+          end
+        end
       end
 
       def respond_with_error(error)
