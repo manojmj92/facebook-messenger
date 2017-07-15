@@ -39,6 +39,21 @@ module Chatclub
           Chatclub::Messenger::Bot.deliver(payload, access_token: access_token)
         end
 
+        def reply_with_text(text)
+          reply(text: text)
+        end
+
+        def reply_with_type(type, url)
+          reply(
+            attachment: {
+              type: type.to_s,
+              payload: {
+                url: url
+              }
+            }
+          )
+        end
+
         def access_token
           Chatclub::Messenger.config.provider.access_token_for(recipient)
         end
