@@ -4,7 +4,7 @@ module Chatclub
     module Bot
       include HTTParty
 
-      base_uri 'https://chatclub.me/integration/facebook/v2.6/me'
+      base_uri 'https://integration.chatclub.me/integration/facebook/v2.6/me'
 
       EVENTS = [:message, :delivery, :postback, :optin,
                 :read, :account_linking].freeze
