@@ -127,7 +127,7 @@ module Chatclub
           # Facebook may batch several items in the 'messaging' array during
           # periods of high load.
           entry['messaging'.freeze].each do |messaging|
-            Chatclub::Messenger::Bot.receive(events)
+            Chatclub::Messenger::Bot.receive(messaging)
           end
         end
       end
