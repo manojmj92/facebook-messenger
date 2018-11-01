@@ -1,5 +1,7 @@
 module Facebook
   module Messenger
-    VERSION = '0.10.0'.freeze
+    #
+    # @return [String] Define the version of gem.
+    VERSION = '1.1.1'.freeze
   end
 end

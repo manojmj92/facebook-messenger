@@ -1,5 +1,71 @@
 # Change Log
 
+## [1.1.1] - 2018-07-10
+
+### Fixed
+- Fixed a bug that caused messaging types and tags to not be required.
+
+## [1.1.0] - 2018-06-28
+
+### Added
+- Support for Rack 1.4.5 or newer (was 1.6.4).
+- `Incoming::Optin#user_ref`.
+- Support for message requests.
+- Support for Facebook's built-in NLP with `Incoming::Message#nlp`.
+- Support for payments with `Incoming::Payment`.
+- Support for handover.
+- Support for message types and tags.
+- Support for prior message.
+- Support for Graph API v2.9.
+
+### Changed
+- Error codes now include subcodes
+
+## [1.0.0] - 2017-05-31
+
+### Added
+- You may now subscribe to message echoes without DDOSing yourself.
+
+## [0.13.0] - 2017-05-18
+
+### Added
+- `Message#app_id` yields the application ID for message echoes.
+- Helpers to determine the attachments of a message (e.g. `Message#image_attachment?`).
+
+### Changed
+- `Thread` is now `Profile` to correspond with Facebook's API.
+
+## [0.12.0] - 2017-03-31
+### Added
+- Various errors from the Facebook Messenger platform are now subclasses of
+  `Facebook::Messenger::Errors` to allow easier error handling.
+- `Message#mark_seen` will mark the received message as seen.
+
+### Changed
+- `type` is now `typing_on` and `typing_off`.
+
+### Fixed
+- `Message#referral` now returns `nil` if there is no referral.
+
+## [0.11.1] - 2016-11-23
+### Fixed
+- Webhooks that don't have messaging will now be ignored rather than crash.
+- Refactored use of `dig` for compatibility with Ruby < 2.3.
+
+## [0.11.0] - 2016-11-19
+### Added
+- `reply` and `type` are now available on any incoming entry (such as messages
+  or postbacks).
+- With the introduction of configuration providers, bots may now be installed to
+  multiple Facebook Pages.
+- `Incoming::Message` now has an `echo?` method which returns a boolean
+  describing whether the message was an echo.
+
+### Changed
+- `Bot.deliver` now requires a keyword argument `access_token`.
+- `Facebook::Messenger.configuration.verify_token`, `app_secret` and
+  `access_token` are replaced by configuration providers.
+
 ## [0.10.0] - 2016-09-23
 ### Fixed
 - Fixed a bug that caused `Message.quick_replies` to crash when a

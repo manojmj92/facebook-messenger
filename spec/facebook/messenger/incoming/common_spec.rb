@@ -28,6 +28,10 @@ describe Dummy do
             'url' => 'https://www.example.com/1.jpg'
           }
         }]
+      },
+      'prior_message' => {
+        'source' => 'checkbox_plugin',
+        'identifier' => '903dac41-0976-467f-805e-ed58dc23a783'
       }
     }
   end
@@ -46,13 +50,19 @@ describe Dummy do
     end
   end
 
+  describe '.prior_message' do
+    it 'returns the message' do
+      expect(subject.prior_message).to eq(payload['prior_message'])
+    end
+  end
+
   describe '.sent_at' do
     it 'returns when the message was sent' do
       expect(subject.sent_at).to eq(Time.at(payload['timestamp'] / 1000))
     end
   end
 
-  describe '.type' do
+  describe '.typing_on' do
     let(:access_token) { 'access_token' }
 
     it 'sends a typing indicator to the sender' do
@@ -66,14 +76,14 @@ describe Dummy do
                 sender_action: 'typing_on'
               }, access_token: access_token)
 
-      subject.type
+      subject.typing_on
     end
   end
 
-  describe '.reply' do
+  describe '.typing_off' do
     let(:access_token) { 'access_token' }
 
-    it 'replies to the sender' do
+    it 'sends a typing off indicator to the sender' do
       expect(Facebook::Messenger.config.provider).to receive(:access_token_for)
         .with(subject.recipient)
         .and_return(access_token)
@@ -81,7 +91,44 @@ describe Dummy do
       expect(Facebook::Messenger::Bot).to receive(:deliver)
         .with({
                 recipient: subject.sender,
-                message: { text: 'Hello, human' }
+                sender_action: 'typing_off'
+              }, access_token: access_token)
+
+      subject.typing_off
+    end
+  end
+
+  describe '.mark_seen' do
+    let(:access_token) { 'access_token' }
+
+    it 'sends a typing off indicator to the sender' do
+      expect(Facebook::Messenger.config.provider).to receive(:access_token_for)
+        .with(subject.recipient)
+        .and_return(access_token)
+
+      expect(Facebook::Messenger::Bot).to receive(:deliver)
+        .with({
+                recipient: subject.sender,
+                sender_action: 'mark_seen'
+              }, access_token: access_token)
+
+      subject.mark_seen
+    end
+  end
+
+  describe '.reply' do
+    let(:access_token) { 'access_token' }
+
+    it 'replies to the sender with the default message type' do
+      expect(Facebook::Messenger.config.provider).to receive(:access_token_for)
+        .with(subject.recipient)
+        .and_return(access_token)
+
+      expect(Facebook::Messenger::Bot).to receive(:deliver)
+        .with({
+                recipient: subject.sender,
+                message: { text: 'Hello, human' },
+                message_type: Facebook::Messenger::Bot::MessageType::RESPONSE
               }, access_token: access_token)
 
       subject.reply(text: 'Hello, human')

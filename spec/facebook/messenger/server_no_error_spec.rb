@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rack/test'
 
-describe Facebook::Messenger::Server do
+describe Facebook::Messenger::ServerNoError do
   include Rack::Test::Methods
 
   let(:verify_token) { 'verify token' }
@@ -10,7 +10,7 @@ describe Facebook::Messenger::Server do
   let(:challenge) { 'challenge' }
 
   def app
-    Facebook::Messenger::Server
+    Facebook::Messenger::ServerNoError
   end
 
   before do
